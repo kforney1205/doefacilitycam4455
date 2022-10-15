@@ -2044,7 +2044,7 @@ var reg = {
 
 };
 
-var remote_alias_autocomplete = new autoComplete({
+/*var remote_alias_autocomplete = new autoComplete({
             selector: '#remotealias',
             minChars: 1,
             source: function(term, suggest){
@@ -2068,5 +2068,5 @@ var remote_alias_autocomplete = new autoComplete({
                 }
                 suggest(suggestions);
             }
-        });
+        });*/
 
