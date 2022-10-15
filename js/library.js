@@ -1931,7 +1931,7 @@ var reg = {
     },
 
     start_events : function() {
-        this.event_source = new EventSource("https://" + this.node + "/api/client/v3/registrations/" + this.alias + "/events?token=" + this.token);
+        this.event_source = new EventSource("https://" + this.node + "/api/client/v2/registrations/" + this.alias + "/events?token=" + this.token);
         this.event_source.addEventListener("incoming", reg.incoming.bind(this), false);
         this.event_source.addEventListener("incoming_cancelled", reg.incoming_cancelled.bind(this), false);
         return true;
@@ -1989,7 +1989,7 @@ var reg = {
 
     release_incoming_token : function(token, conference) {
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST", "https://" + this.node + "/api/client/v3/conferences/" + conference + "/release_token", false);
+        xmlhttp.open("POST", "https://" + this.node + "/api/client/v2/conferences/" + conference + "/release_token", false);
         if (token) {
             xmlhttp.setRequestHeader("token", token);
         }
@@ -2005,7 +2005,7 @@ var reg = {
 
     post_request : function(command, data, username, password) {
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST", "https://" + this.node + "/api/client/v3/registrations/" + this.alias + "/" + command, false);
+        xmlhttp.open("POST", "https://" + this.node + "/api/client/v2/registrations/" + this.alias + "/" + command, false);
         if (this.token) {
             xmlhttp.setRequestHeader("token", this.token);
         }
@@ -2028,7 +2028,7 @@ var reg = {
 
     get_request : function(command) {
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", "https://" + this.node + "/api/client/v3/registrations/" + this.alias + "/" + command, false);
+        xmlhttp.open("GET", "https://" + this.node + "/api/client/v2/registrations/" + this.alias + "/" + command, false);
         if (this.token) {
             xmlhttp.setRequestHeader("token", this.token);
         }
@@ -2050,7 +2050,7 @@ var remote_alias_autocomplete = new autoComplete({
             source: function(term, suggest){
                 term = term.toLowerCase();
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("GET", "https://" + user.node + "/api/client/v3/registrations?q=" + term, false);
+                xmlhttp.open("GET", "https://" + user.node + "/api/client/v2/registrations?q=" + term, false);
                 if (user.token) {
                     xmlhttp.setRequestHeader("token", user.token);
                 }
